@@ -39,7 +39,7 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col">
         <section className="bg-gray-200 min-h-dvh grid grid-rows-[auto_1fr_auto]">
           <header className="bg-white/50">
-            <div className="max-w-4xl mx-auto flex items-center justify-between">
+            <div className="max-w-7xl mx-auto flex items-center justify-between">
               <Link href="/"><h2 className="text-2xl text-gray-500 py-3">hearMeOut</h2></Link>
               <nav>{/* className="max-w-4xl mx-auto" */}
                 <ul className=" text-gray-500 text-sm">
@@ -53,7 +53,7 @@ export default function RootLayout({
               </nav>
             </div>
           </header>
-          <main className="max-w-4xl mx-auto bg-white/50 rounded-xl py-7 px-8 m-6 overflow-hidden">
+          <main className="max-w-7xl mx-auto rounded-xl py-7 px-8 m-6 overflow-hidden"> {/* bg-white/50 */}
             {children}
           </main>
           <Footer />
