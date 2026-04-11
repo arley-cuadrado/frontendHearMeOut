@@ -19,8 +19,13 @@
   }
 }
 
+@font-face {
+  font-family: 'Milker';
+  src: url('../../public/fonts/Milker.otf') format('otf');
+}
+
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
 }
+

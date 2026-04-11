@@ -8,7 +8,7 @@ export default function Footer() {
                     <p>
                         &copy; {new Date().getFullYear()} |  <strong><Link href={'https://www.instagram.com/arlo_cuadrado/'} target="_blank">@arlo_cuadrado</Link></strong>
                     </p>
-                    <span>Made with love and lots of coffee</span>
+                    <span>Made with love and lots of <strong className="underline decoration-wavy leading-loose">coffee</strong></span>
                 </section>
             </footer>
         </>

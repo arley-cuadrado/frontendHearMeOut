@@ -28,7 +28,7 @@ export default async function Artists() {
     return (
         <>
             <h1 className="text-7xl mb-6 font font-bold text-gray-700">Releases</h1>
-            <div className="grid grid-cols-3 gap-6">
+            <div className="grid grid-cols-3 gap-6 mb-7">
                 {artists.map((artist: ArtistsData) => (
                     <div key={artist.id}>
                         <Link className="group grid grid-cols--[140px_1fr] bg-white shadow overflow-hidden relative" href={`/artists/${artist.slug}`}>
