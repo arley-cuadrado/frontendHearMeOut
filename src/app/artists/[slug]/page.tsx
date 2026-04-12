@@ -1,5 +1,6 @@
 import { BlocksRenderer } from "@strapi/blocks-react-renderer";
 import qs from "qs";
+import Quote from "../../../../components/Quote";
 
 interface DetailArtistsData {
     slug: string;
@@ -19,15 +20,15 @@ async function fetchArtistDetail(slug: string) {
                 slug: slug
             },
             populate: {
+                photo: {
+                    populate: "*"
+                },
                 bodyContent: {
                     on: {
-                        "features.testimonial": {
-                            populate: "*"
-                        },
-                        "features.spoiler": {
-                            populate: "*"
-                        },
                         "features.rich-text": {
+                            populate: "*"
+                        },
+                        "features.quote": {
                             populate: "*"
                         }
                     }
@@ -54,14 +55,11 @@ export default async function DetailArtist({
     console.log('TEXT TERMINAL ARLO: ' + JSON.stringify(artist))
 
     function OurRenderer(item: any, index: number) {
-        if (item.__component === "features.testimonial") {
-            return (<p key={index}>This is a testimonial</p>)
-        }
-        if (item.__component === "features.spoiler") {
-            return (<p key={index}>This is a spoiler</p>)
-        }
         if (item.__component === "features.rich-text") {
             return <BlocksRenderer key={index} content={item.content} />
+        }
+        if (item.__component === "features.quote") {
+            return <Quote key={index} phrase={item.phrase} photo={item.photo} />
         }
     }
 
@@ -69,9 +67,10 @@ export default async function DetailArtist({
 
         <>
             {artist.name} <h3>{artist.description}</h3>
-            <div>
+            <article className="prose max-w-none"> {/* lg:prose-xl dark:prose-invert */}
                 {artist.bodyContent.map((item: any, index: number) => OurRenderer(item, index))}
-            </div>
+            </article >
+            {/*<Quote />*/}
         </>
 
     )
