@@ -29,9 +29,7 @@ export default function Video({ video }: { video: string }) {
 
     return (
         <>
-            <section className="container">
-
-
+            <section className="container pt-16 pb-16">
                 <iframe
                     src={embedUrl || ""}
                     className="w-full aspect-video"

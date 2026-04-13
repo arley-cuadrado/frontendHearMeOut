@@ -4,6 +4,7 @@ interface ArtistsData {
     id: number;
     name: string;
     description: string;
+    musicGenre: string;
     slug: string;
     email: string;
     photo: {
@@ -38,7 +39,9 @@ export default async function Artists() {
                                         <div className="pr-8 justify-start">
                                             <p className="text-3xl text-gray-600 font-bold mb-2">{artist.name}</p>
                                             <p className="text-2sm line-clamp-3 text-gray-500 mb-5 w-160">{artist.description}</p>
-                                            <strong>#Category</strong>
+                                            <strong>{artist.musicGenre ? `#${artist.musicGenre}` : ''}</strong>
+
+                                            {/* {isLoggedIn ? <LogoutButton /> : <LoginButton />} */}
                                         </div>
                                         <div className="h-24 overflow-hiddeng ">
                                             <img

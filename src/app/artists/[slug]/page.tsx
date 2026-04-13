@@ -3,6 +3,7 @@ import qs from "qs";
 import Quote from "../../../../components/Quote";
 import Live from "../../../../components/Live";
 import Video from "../../../../components/Video";
+import SpotifyPlayer from "../../../../components/SpotifyPlayer";
 
 interface DetailArtistsData {
     slug: string;
@@ -77,7 +78,7 @@ export default async function DetailArtist({
                     <h1 className="text-5xl text-center uppercase font-bold text-white">
                         {artist.releasesTitle}
                     </h1>
-                    <div><p className="text-white">Available everywhere</p></div>
+                    <div><strong className="text-white">{artist.musicGenre}</strong></div>
                 </section>
             </header>
             <section className="flex flex-col items-center">
@@ -87,8 +88,9 @@ export default async function DetailArtist({
                         {artist.bodyContent.map((item: any, index: number) => OurRenderer(item, index))}
                     </article >
                     <Video video={artist.urlVideo} />
-                    <Live />
+                    <Live params={artist} />
                 </main>
+                <SpotifyPlayer url={artist.spotifyUrl} />
             </section>
             {/*<Quote />*/}
         </>
