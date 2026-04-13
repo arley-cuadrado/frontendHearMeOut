@@ -2,10 +2,10 @@ export function getSpotifyEmbed(url: string) {
     try {
         const parsed = new URL(url)
 
-        // limpia parámetros tipo ?si=xxxx
+        // Clean params as ?si=xxxx
         const cleanPath = parsed.pathname.split("?")[0]
 
-        // ejemplo: /artist/123abc
+        // example: /artist/123abc
         const parts = cleanPath.split("/").filter(Boolean)
 
         const type = parts[0] // artist, track, album, playlist

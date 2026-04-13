@@ -1,6 +1,4 @@
 'use client'
-import Image from "next/image"
-import Link from "next/link"
 
 interface dataArtist {
     artist: string;
@@ -15,7 +13,6 @@ export default function Header(artist: dataArtist) {
                     New album OUT NOW- <br />
                     {artist.artist}
                 </h1>
-                <div><p className="text-white">Available everywhere</p></div>
             </header>
         </>
     )

@@ -37,11 +37,11 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
-        <section className="min-h-dvh">{/* bg-gray-200  */}
+        <section className="min-h-dvh">
           <div className="bg-white/50">
             <div className="max-w-7xl mx-auto flex items-center justify-between px-8">
               <Link href="/"><h2 className="text-2xl text-gray-500 py-3 font-bold">hearMeOut</h2></Link>
-              <nav>{/* className="max-w-4xl mx-auto" */}
+              <nav>
                 <ul className=" text-gray-500 text-sm">
                   <li className="flex gap-x-7">
                     {navItems.map((navItem) => (
@@ -53,7 +53,7 @@ export default function RootLayout({
               </nav>
             </div>
           </div>
-          <main className="max-w-7xl mx-auto rounded-xl py-7 px-8 m-6 overflow-hidden"> {/* bg-white/50 */}
+          <main className="max-w-7xl mx-auto rounded-xl py-7 px-8 m-6 overflow-hidden">
             {children}
           </main>
           <Footer />

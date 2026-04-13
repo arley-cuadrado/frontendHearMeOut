@@ -30,7 +30,7 @@ export default async function Artists() {
         <>
             <section>
                 <h1 className="text-7xl mb-6 font font-bold text-gray-700">Releases</h1>
-                <section className="grid grid-cols-[75%_25%]">{/* grid grid-cols-[80%_20%] */}
+                <section className="grid grid-cols-[75%_25%]">
                     <main className="border-r border-gray-100">
                         {artists.map((artist: ArtistsData) => (
                             <article key={artist.id} className="grid hover:font-bold transition-all duration-300 w-200">
@@ -40,15 +40,13 @@ export default async function Artists() {
                                             <p className="text-3xl text-gray-600 font-bold mb-2">{artist.name}</p>
                                             <p className="text-2sm line-clamp-3 text-gray-500 mb-5 w-160">{artist.description}</p>
                                             <strong>{artist.musicGenre ? `#${artist.musicGenre}` : ''}</strong>
-
-                                            {/* {isLoggedIn ? <LogoutButton /> : <LoginButton />} */}
                                         </div>
                                         <div className="h-24 overflow-hiddeng ">
                                             <img
                                                 className="w-32 h-full object-cover"
                                                 src={`http://localhost:1337${artist.photo.formats.small.url}`}
                                                 alt=""
-                                            />{/* absolute */}
+                                            />
                                         </div>
                                     </section>
                                 </Link>

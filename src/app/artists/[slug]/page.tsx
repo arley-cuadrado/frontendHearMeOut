@@ -4,6 +4,7 @@ import Quote from "../../../../components/Quote";
 import Live from "../../../../components/Live";
 import Video from "../../../../components/Video";
 import SpotifyPlayer from "../../../../components/SpotifyPlayer";
+import SocialMedia from "../../../../components/SocialMedia";
 
 interface DetailArtistsData {
     slug: string;
@@ -90,9 +91,9 @@ export default async function DetailArtist({
                     <Video video={artist.urlVideo} />
                     <Live params={artist} />
                 </main>
-                <SpotifyPlayer url={artist.spotifyUrl} />
+                <SpotifyPlayer url={artist.spotifyUrl} spotifyAccount={artist.spotifyAccount} />
+                <SocialMedia socialmedia={artist} />
             </section>
-            {/*<Quote />*/}
         </>
 
     )
