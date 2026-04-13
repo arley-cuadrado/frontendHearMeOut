@@ -37,7 +37,7 @@ export default function RootLayout({
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
-        <section className="bg-gray-200 min-h-dvh grid grid-rows-[auto_1fr_auto]">
+        <section className="min-h-dvh">{/* bg-gray-200  */}
           <header className="bg-white/50">
             <div className="max-w-7xl mx-auto flex items-center justify-between px-8">
               <Link href="/"><h2 className="text-2xl text-gray-500 py-3 font-bold">hearMeOut</h2></Link>

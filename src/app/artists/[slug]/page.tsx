@@ -1,6 +1,8 @@
 import { BlocksRenderer } from "@strapi/blocks-react-renderer";
 import qs from "qs";
 import Quote from "../../../../components/Quote";
+import Live from "../../../../components/Live";
+import Video from "../../../../components/Video";
 
 interface DetailArtistsData {
     slug: string;
@@ -52,8 +54,6 @@ export default async function DetailArtist({
         return <div>Artist not found</div>
     }
 
-    console.log('TEXT TERMINAL ARLO: ' + JSON.stringify(artist))
-
     function OurRenderer(item: any, index: number) {
         if (item.__component === "features.rich-text") {
             return <BlocksRenderer key={index} content={item.content} />
@@ -66,10 +66,30 @@ export default async function DetailArtist({
     return (
 
         <>
-            {artist.name} <h3>{artist.description}</h3>
-            <article className="prose max-w-none"> {/* lg:prose-xl dark:prose-invert */}
-                {artist.bodyContent.map((item: any, index: number) => OurRenderer(item, index))}
-            </article >
+
+            <header className="bg-[url('/images/hero.jpeg')] bg-cover bg-center h-100 flex items-center ">
+                <img
+                    className="w-100 h-full object-cover"
+                    src={`http://localhost:1337${artist.photo.formats.small.url}`}
+                    alt=""
+                />
+                <section>
+                    <h1 className="text-5xl text-center uppercase font-bold text-white">
+                        {artist.releasesTitle}
+                    </h1>
+                    <div><p className="text-white">Available everywhere</p></div>
+                </section>
+            </header>
+            <section className="flex flex-col items-center">
+                <main className="w-150 gap-4">
+                    <h1 className="text-8xl font-bold pt-16 pb-16">{artist.name}</h1> <h3>{artist.description}</h3>
+                    <article className="prose max-w-none"> {/* lg:prose-xl dark:prose-invert */}
+                        {artist.bodyContent.map((item: any, index: number) => OurRenderer(item, index))}
+                    </article >
+                    <Video video={artist.urlVideo} />
+                    <Live />
+                </main>
+            </section>
             {/*<Quote />*/}
         </>
 
