@@ -36,7 +36,8 @@ async function fetchArtistDetail(slug: string) {
                             populate: "*"
                         }
                     }
-                }
+                },
+                socialMedia: true
             }
         })
     const artistsPromise = await fetch(`http://localhost:1337/api/artists?${artistQuery}`)
@@ -68,7 +69,6 @@ export default async function DetailArtist({
     return (
 
         <>
-
             <header className="bg-[url('/images/hero.jpeg')] bg-cover bg-center h-100 flex items-center ">
                 <img
                     className="w-100 h-full object-cover"
@@ -92,7 +92,7 @@ export default async function DetailArtist({
                     <Live params={artist} />
                 </main>
                 <SpotifyPlayer url={artist.spotifyUrl} spotifyAccount={artist.spotifyAccount} />
-                <SocialMedia socialmedia={artist} />
+                <SocialMedia social={artist.socialMedia[0]} />
             </section>
         </>
 

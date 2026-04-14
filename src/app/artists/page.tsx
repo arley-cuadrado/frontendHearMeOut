@@ -62,7 +62,7 @@ export default async function Artists() {
                                     <h2 className="font-semibold tracking-tight text-pretty text-gray-900 ">Binevenid@!</h2>
                                     <p className="mt-2 text-gray-600">Esta es una versión temprana del sitio, un espacio donde encontrarás artistas independientes.</p>
                                 </div>
-                                <div className="grid-cols-1 gap-x-8 gap-y-16 border-t border-gray-200 pt-10 sm:mt-16 sm:pt-16 lg:mx-0 lg:max-w-none lg:grid-cols-3">
+                                <div className="grid-cols-1 gap-x-8 gap-y-16 border-t border-gray-200 pt-10 sm:mt-10 lg:mx-0 lg:max-w-none lg:grid-cols-3">
                                     <article className="flex max-w-xl flex-col items-start justify-between">
                                         <div className="flex items-center gap-x-4 text-xs">
                                             <time dateTime="2020-03-16" className="text-gray-500">Mar 16, 2020</time>
