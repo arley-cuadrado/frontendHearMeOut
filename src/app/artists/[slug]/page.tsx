@@ -5,6 +5,7 @@ import Live from "../../../../components/Live";
 import Video from "../../../../components/Video";
 import SpotifyPlayer from "../../../../components/SpotifyPlayer";
 import SocialMedia from "../../../../components/SocialMedia";
+import MasonryGrid from "../../../../components/MasonryGrid";
 
 interface DetailArtistsData {
     slug: string;
@@ -37,7 +38,8 @@ async function fetchArtistDetail(slug: string) {
                         }
                     }
                 },
-                socialMedia: true
+                socialMedia: true,
+                gallery: true
             }
         })
     const artistsPromise = await fetch(`http://localhost:1337/api/artists?${artistQuery}`)
@@ -91,6 +93,7 @@ export default async function DetailArtist({
                     <Video video={artist.urlVideo} />
                     <Live params={artist} />
                 </main>
+                <MasonryGrid gallery={artist.gallery} />
                 <SpotifyPlayer url={artist.spotifyUrl} spotifyAccount={artist.spotifyAccount} />
                 <SocialMedia social={artist.socialMedia[0]} />
             </section>
