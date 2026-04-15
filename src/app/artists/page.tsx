@@ -1,20 +1,6 @@
-import Link from "next/link";
-
-interface ArtistsData {
-    id: number;
-    name: string;
-    description: string;
-    musicGenre: string;
-    slug: string;
-    email: string;
-    photo: {
-        formats: {
-            small: {
-                url: string;
-            };
-        };
-    };
-}
+import Releases from "../../../components/Releases";
+import Aside from "../../../components/Aside";
+import ArtistsClient from "../../../components/ArtistClient";
 
 async function getAllArtists() {
     const artistsPromise = await fetch("http://localhost:1337/api/artists?populate=*")
@@ -25,75 +11,14 @@ async function getAllArtists() {
 export default async function Artists() {
     const artists = await getAllArtists()
 
-
     return (
         <>
             <section>
-                <h1 className="text-7xl mb-6 font font-bold text-gray-700">Releases</h1>
                 <section className="grid grid-cols-[75%_25%]">
                     <main className="border-r border-gray-100">
-                        {artists.map((artist: ArtistsData) => (
-                            <article key={artist.id} className="grid hover:font-bold transition-all duration-300 w-200">
-                                <Link href={`/artists/${artist.slug}`}>
-                                    <section className="flex bg-white pb-4 place-items-center">
-                                        <div className="pr-8 justify-start">
-                                            <p className="text-3xl text-gray-600 font-bold mb-2">{artist.name}</p>
-                                            <p className="text-2sm line-clamp-3 text-gray-500 mb-5 w-160">{artist.description}</p>
-                                            <strong>{artist.musicGenre ? `#${artist.musicGenre}` : ''}</strong>
-                                        </div>
-                                        <div className="h-24 overflow-hiddeng ">
-                                            <img
-                                                className="w-32 h-full object-cover"
-                                                src={`http://localhost:1337${artist.photo.formats.small.url}`}
-                                                alt=""
-                                            />
-                                        </div>
-                                    </section>
-                                </Link>
-                                <hr className="my-4 grid-cols-1 gap-x-8 gap-y-16 border-t border-gray-200 lg:mx-0 lg:max-w-none lg:grid-cols-3" />
-                            </article>
-                        ))
-                        }
+                        <ArtistsClient artists={artists} />
                     </main>
-                    <aside className="gap-6 mb-7">
-                        <div className="bg-white pb-24 sm:pb-32">
-                            <div className="mx-auto max-w-7xl px-6 lg:px-8">
-                                <div className="mx-auto max-w-2xl lg:mx-0">
-                                    <h2 className="font-semibold tracking-tight text-pretty text-gray-900 ">Binevenid@!</h2>
-                                    <p className="mt-2 text-gray-600">Esta es una versión temprana del sitio, un espacio donde encontrarás artistas independientes.</p>
-                                </div>
-                                <div className="grid-cols-1 gap-x-8 gap-y-16 border-t border-gray-200 pt-10 sm:mt-10 lg:mx-0 lg:max-w-none lg:grid-cols-3">
-                                    <article className="flex max-w-xl flex-col items-start justify-between">
-                                        <div className="flex items-center gap-x-4 text-xs">
-                                            <time dateTime="2020-03-16" className="text-gray-500">Mar 16, 2020</time>
-                                            <a href="#" className="relative z-10 rounded-full bg-gray-50 px-3 py-1.5 font-medium text-gray-600 hover:bg-gray-100">CTO</a>
-                                        </div>
-                                        <div className="group relative grow">
-                                            <h3 className="mt-3 text-lg/6 font-semibold text-gray-900 group-hover:text-gray-600">
-                                                <a href="#">
-                                                    <span className="absolute inset-0"></span>
-                                                    Por qué HearMeOut
-                                                </a>
-                                            </h3>
-                                            <p className="mt-5 line-clamp-3 text-sm/6 text-gray-600">Illo sint voluptas. Error voluptates culpa eligendi. Hic vel totam vitae illo. Non aliquid explicabo necessitatibus unde. Sed exercitationem placeat consectetur nulla deserunt vel. Iusto corrupti dicta.</p>
-                                        </div>
-                                        <div className="relative mt-8 flex items-center gap-x-4 justify-self-end">
-                                            <img src="https://images.unsplash.com/photo-1519244703995-f4e0f30006d5?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80" alt="" className="size-10 rounded-full bg-gray-50" />
-                                            <div className="text-sm/6">
-                                                <p className="font-semibold text-gray-900">
-                                                    <a href="#">
-                                                        <span className="absolute inset-0"></span>
-                                                        Arlo Cuadrado
-                                                    </a>
-                                                </p>
-                                                <p className="text-gray-600">Founder / Conten Creator</p>
-                                            </div>
-                                        </div>
-                                    </article>
-                                </div>
-                            </div>
-                        </div>
-                    </aside>
+                    <Aside />
                 </section>
             </section>
         </>

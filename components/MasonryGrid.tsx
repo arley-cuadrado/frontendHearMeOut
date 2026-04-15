@@ -20,13 +20,13 @@ export default function MasonryGrid({ gallery }: { gallery: any }) {
                 {gallery.map((image: any, index: any) => (
                     <div key={index} className="mb-4 break-inside-avoid">{/* mb-4 break-inside-avoid */}
                         <div
-                            className="aspect-square overflow-hidden rounded-lg"
+                            className="aspect-square overflow-hidden"
                             onClick={() => setSelectedImage(image)}
-                        >
+                        >{/* rounded-lg */}
                             <img src={`${baseUrl}${image.formats.thumbnail.url}`}
                                 key={image.id}
                                 alt=""
-                                className="w-full h-full object-cover" />{/* w-full object-cover rounded-lg */}
+                                className="w-full h-full object-cover cursor-pointer" />{/* w-full object-cover rounded-lg */}
                         </div>
                     </div>
                 ))}
@@ -40,9 +40,9 @@ export default function MasonryGrid({ gallery }: { gallery: any }) {
                     >
                         <img
                             src={`${baseUrl}${imageUrl}`}
-                            className="max-h-[90vh] max-w-[90vw] rounded-lg"
+                            className="max-h-[90vh] max-w-[90vw]"
                             onClick={(e) => e.stopPropagation()}
-                        />
+                        />{/* rounded-lg */}
                     </div>
 
                 )

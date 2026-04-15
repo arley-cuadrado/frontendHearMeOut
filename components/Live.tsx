@@ -29,7 +29,7 @@ export default async function Live({ params }: { params: { slug: string } }) {
                                         <td className="pt-2 pb-2">{item.city}</td>
                                         <td className="pt-2 pb-2"><span className="badge badge-soft badge-success text-xs">{item.venue}</span></td>
                                         <td>
-                                            <button className="bg-black text-white px-4 py-1 rounded-full text-sm hover:bg-gray-800 transition">Get Ticket</button>
+                                            <button className="bg-black text-white px-4 py-1 rounded-full text-sm hover:bg-gray-800 transition cursor-pointer">Get Ticket</button>
                                         </td>
                                     </tr>
                                 ))
