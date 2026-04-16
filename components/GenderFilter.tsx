@@ -1,12 +1,20 @@
 //"use client"
 
-export default function GenderFilter({ artists, selectedGenre, onSelectGenre }: {
-    artists: any[]
-    selectedGenre: string | null
-    onSelectGenre: (genre: string | null) => void
-}) {
+interface Artist {
+    id: number;
+    artist: string;
+    releasesTitle: string;
+    musicGenre: string;
+}
+interface GenderFilterProps {
+    artists: Artist[];
+    selectedGenre: string | null;
+    onSelectGenre: (genre: string | null) => void;
+}
 
-    // Quitar duplicados
+export default function GenderFilter({ artists, selectedGenre, onSelectGenre }: GenderFilterProps) {
+
+    // Eliminar duplicados
     const genres = [...new Set(artists.map(a => a.musicGenre))]
 
     return (
@@ -16,7 +24,7 @@ export default function GenderFilter({ artists, selectedGenre, onSelectGenre }: 
             <button
                 onClick={() => onSelectGenre(null)}
                 className={`px-4 py-2 rounded-full transition
-                        ${onSelectGenre === null
+                ${selectedGenre === null
                         ? "bg-black text-white"
                         : "bg-gray-200 hover:bg-gray-300 cursor-pointer"
                     }`}
@@ -24,7 +32,7 @@ export default function GenderFilter({ artists, selectedGenre, onSelectGenre }: 
                 All
             </button>
 
-            {genres.map((genre: string, index: number) => (
+            {genres.map((genre, index) => (
                 <button
                     key={index}
                     onClick={() => onSelectGenre(genre)}

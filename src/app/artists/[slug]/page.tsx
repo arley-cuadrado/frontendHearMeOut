@@ -72,7 +72,7 @@ export default async function DetailArtist({ params }: { params: DetailArtistsDa
             <section className="flex flex-col items-center">
                 <main className="w-150 gap-4">
                     <h1 className="text-8xl font-bold pt-16 pb-16">{artist.name}</h1> <h3>{artist.description}</h3>
-                    <article className="prose max-w-none"> {/* lg:prose-xl dark:prose-invert */}
+                    <article className="prose max-w-none">
                         {artist.bodyContent.map((item: any, index: number) => OurRenderer(item, index))}
                     </article >
                     <Video video={artist.urlVideo} />

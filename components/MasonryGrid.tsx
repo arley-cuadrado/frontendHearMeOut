@@ -1,9 +1,28 @@
 'use client'
 import { useState } from "react"
 
-export default function MasonryGrid({ gallery }: { gallery: any }) {
+interface ImageFormat {
+    url: string;
+}
 
-    const [selectedImage, setSelectedImage] = useState<any>(null)
+interface ImageFormats {
+    thumbnail: ImageFormat;
+    small?: ImageFormat;
+    medium?: ImageFormat;
+}
+
+interface GalleryImage {
+    id: number;
+    formats: ImageFormats;
+}
+
+interface MasonryGridProps {
+    gallery: GalleryImage[];
+}
+
+export default function MasonryGrid({ gallery }: MasonryGridProps) {
+
+    const [selectedImage, setSelectedImage] = useState<GalleryImage | null>(null)
 
     const baseUrl = process.env.NEXT_PUBLIC_STRAPI_URL
 
@@ -16,9 +35,9 @@ export default function MasonryGrid({ gallery }: { gallery: any }) {
 
     return (
         <>
-            <div className="columns-1 sm:columns-2 lg:columns-3 gap-4 py-10 md:py-20 w-150">{/* columns-1 sm:columns-2 1g:columns-3 py-10 md:py-20 gap-4 */}
-                {gallery.map((image: any, index: any) => (
-                    <div key={index} className="mb-4 break-inside-avoid">{/* mb-4 break-inside-avoid */}
+            <div className="columns-1 sm:columns-2 lg:columns-3 gap-4 py-10 md:py-20 w-150">
+                {gallery.map((image, index) => (
+                    <div key={index} className="mb-4 break-inside-avoid">
                         <div
                             className="aspect-square overflow-hidden"
                             onClick={() => setSelectedImage(image)}
@@ -26,7 +45,7 @@ export default function MasonryGrid({ gallery }: { gallery: any }) {
                             <img src={`${baseUrl}${image.formats.thumbnail.url}`}
                                 key={image.id}
                                 alt=""
-                                className="w-full h-full object-cover cursor-pointer" />{/* w-full object-cover rounded-lg */}
+                                className="w-full h-full object-cover cursor-pointer" />
                         </div>
                     </div>
                 ))}

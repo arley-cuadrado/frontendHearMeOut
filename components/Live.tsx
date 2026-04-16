@@ -1,9 +1,27 @@
 import { fetchArtistDetail } from '../lib/api';
 
-export default async function Live({ params }: { params: { slug: string } }) {
+interface LiveEventsProps {
+    params: {
+        slug: string;
+    };
+}
 
-    const artist = await fetchArtistDetail(params.slug)
-    //const event = artist?.tour
+interface LiveEvent {
+    id: number;
+    slug: string;
+    date: string;
+    city: string;
+    venue: string;
+}
+
+interface ArtistDetail {
+    event: LiveEvent[];
+}
+
+export default async function Live({ params }: LiveEventsProps) {
+
+    const artist: ArtistDetail = await fetchArtistDetail(params.slug)
+
     const event = artist.event
 
     return (<>
@@ -23,7 +41,7 @@ export default async function Live({ params }: { params: { slug: string } }) {
                         </thead>
                         <tbody>
                             {
-                                event.map((item: any) => (
+                                event.map((item) => (
                                     <tr className="row-hover" key={item.id}>
                                         <td className="pt-2 pb-2">{item.date}</td>
                                         <td className="pt-2 pb-2">{item.city}</td>
