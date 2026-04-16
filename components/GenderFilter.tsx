@@ -15,7 +15,7 @@ export default function GenderFilter({ artists, selectedGenre, onSelectGenre }: 
             {/* Botón reset */}
             <button
                 onClick={() => onSelectGenre(null)}
-                className={` cursor-pointer px-4 py-2 rounded-full transition
+                className={`px-4 py-2 rounded-full transition
                         ${onSelectGenre === null
                         ? "bg-black text-white"
                         : "bg-gray-200 hover:bg-gray-300"
@@ -28,7 +28,7 @@ export default function GenderFilter({ artists, selectedGenre, onSelectGenre }: 
                 <button
                     key={index}
                     onClick={() => onSelectGenre(genre)}
-                    className={`cursor-pointer whitespace-nowrap px-4 py-2 rounded-full transition
+                    className={`whitespace-nowrap px-4 py-2 rounded-full transition
                     ${selectedGenre === genre
                             ? "bg-black text-white"
                             : "bg-gray-200 hover:bg-gray-300"
