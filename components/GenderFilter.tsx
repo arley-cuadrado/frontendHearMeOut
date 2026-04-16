@@ -18,7 +18,7 @@ export default function GenderFilter({ artists, selectedGenre, onSelectGenre }: 
                 className={`px-4 py-2 rounded-full transition
                         ${onSelectGenre === null
                         ? "bg-black text-white"
-                        : "bg-gray-200 hover:bg-gray-300"
+                        : "bg-gray-200 hover:bg-gray-300 cursor-pointer"
                     }`}
             >
                 All
@@ -31,7 +31,7 @@ export default function GenderFilter({ artists, selectedGenre, onSelectGenre }: 
                     className={`whitespace-nowrap px-4 py-2 rounded-full transition
                     ${selectedGenre === genre
                             ? "bg-black text-white"
-                            : "bg-gray-200 hover:bg-gray-300"
+                            : "bg-gray-200 hover:bg-gray-300 cursor-pointer"
                         }`}
                 >
                     {genre}
