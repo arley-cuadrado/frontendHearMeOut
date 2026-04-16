@@ -12,14 +12,6 @@ export default async function SocialMedia({ social }: { social: any }) {
                     .map(([platform, url]) => (
                         <li key={platform}>
                             <Link href={url as string} className="font-bold capitalize text-blue-500" target="_blank">{platform}</Link>
-
-                            {/*<Link
-                                href={url as string}
-                                target="_blank"
-                                className="text-blue-500"
-                            >
-                                {url as string}
-                            </Link>*/}
                         </li>
                     ))}
             </ul>

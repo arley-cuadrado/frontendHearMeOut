@@ -6,6 +6,7 @@ import Video from "../../../../components/Video";
 import SpotifyPlayer from "../../../../components/SpotifyPlayer";
 import SocialMedia from "../../../../components/SocialMedia";
 import MasonryGrid from "../../../../components/MasonryGrid";
+import ArtistsHeader from "../../../../components/ArtistsHeader";
 
 interface DetailArtistsData {
     slug: string;
@@ -47,11 +48,7 @@ async function fetchArtistDetail(slug: string) {
     return artist.data[0]
 }
 
-export default async function DetailArtist({
-    params
-}: {
-    params: DetailArtistsData
-}) {
+export default async function DetailArtist({ params }: { params: DetailArtistsData }) {
 
     const resolvedParams = await params;
     const artist = await fetchArtistDetail(resolvedParams.slug)
@@ -71,19 +68,7 @@ export default async function DetailArtist({
     return (
 
         <>
-            <header className="bg-[url('/images/hero.jpeg')] bg-cover bg-center h-100 flex items-center ">
-                <img
-                    className="w-100 h-full object-cover"
-                    src={`http://localhost:1337${artist.photo.formats.small.url}`}
-                    alt=""
-                />
-                <section>
-                    <h1 className="text-5xl text-center uppercase font-bold text-white">
-                        {artist.releasesTitle}
-                    </h1>
-                    <div><strong className="text-white">{artist.musicGenre}</strong></div>
-                </section>
-            </header>
+            <ArtistsHeader artist={artist} />
             <section className="flex flex-col items-center">
                 <main className="w-150 gap-4">
                     <h1 className="text-8xl font-bold pt-16 pb-16">{artist.name}</h1> <h3>{artist.description}</h3>

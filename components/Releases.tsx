@@ -18,7 +18,7 @@ interface Artist {
 
 export default function Releases({ artists }: { artists: Artist[] }) {
 
-  const [visibleCount, setVisibleCount] = useState(5)
+  const [visibleCount, setVisibleCount] = useState(2)
 
   // Scroll
   useEffect(() => {
@@ -26,7 +26,7 @@ export default function Releases({ artists }: { artists: Artist[] }) {
       if (
         window.innerHeight + window.scrollY >= document.body.offsetHeight - 200
       ) {
-        setVisibleCount((prev) => prev + 5)
+        setVisibleCount((prev) => prev + 2)
       }
     }
 
