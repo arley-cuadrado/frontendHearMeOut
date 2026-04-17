@@ -9,11 +9,9 @@ export default function GenderFilter({ artists, selectedGenre, onSelectGenre }: 
     // Eliminar duplicados
     const genres: string[] = [...new Set(artists.map(a => a.musicGenre))]
 
-    // Funcionalidad botones
     const scroll = (direction: "left" | "right") => {
         if (!scrollRef.current) return
         const scrollAmount = 200
-        // Efecto
         scrollRef.current.scrollBy({
             left: direction === "left" ? -scrollAmount : scrollAmount,
             behavior: "smooth",
@@ -24,7 +22,7 @@ export default function GenderFilter({ artists, selectedGenre, onSelectGenre }: 
         <div className="relative">
             <button
                 onClick={() => scroll("left")}
-                className="hidden md:flex absolute left-0 top-4  -translate-y-1/2 z-10 bg-white shadow-md rounded-full w-8 h-8 items-center justify-center"
+                className="hidden md:flex absolute left-0 top-4 -translate-y-1/2 z-10 bg-white shadow-md rounded-full w-8 h-8 items-center justify-center"
             >{<strong>{'<'}</strong>}</button>
 
             {/* Contenedor scroll */}
