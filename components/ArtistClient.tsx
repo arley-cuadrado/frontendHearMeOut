@@ -4,7 +4,7 @@ import { useState } from "react"
 import GenderFilter from "./GenderFilter"
 import Releases from "./Releases"
 
-interface Artist {
+export interface Artist {
     id: number
     name: string
     description: string
