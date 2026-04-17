@@ -1,17 +1,6 @@
 'use client'
-
+import { GenderFilterProps } from '../types/artist'
 import { useRef } from "react"
-
-interface Artist {
-    id: number;
-    musicGenre: string;
-}
-
-interface GenderFilterProps {
-    artists: Artist[]
-    selectedGenre: string | null
-    onSelectGenre: (genre: string | null) => void
-}
 
 export default function GenderFilter({ artists, selectedGenre, onSelectGenre }: GenderFilterProps) {
 
@@ -23,9 +12,7 @@ export default function GenderFilter({ artists, selectedGenre, onSelectGenre }: 
     // Funcionalidad botones
     const scroll = (direction: "left" | "right") => {
         if (!scrollRef.current) return
-
         const scrollAmount = 200
-
         // Efecto
         scrollRef.current.scrollBy({
             left: direction === "left" ? -scrollAmount : scrollAmount,
