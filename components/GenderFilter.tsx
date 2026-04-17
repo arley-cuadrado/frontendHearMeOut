@@ -1,4 +1,6 @@
-//"use client"
+'use client'
+
+import { useRef } from "react"
 
 interface Artist {
     id: number;
@@ -6,6 +8,7 @@ interface Artist {
     releasesTitle: string;
     musicGenre: string;
 }
+
 interface GenderFilterProps {
     artists: Artist[];
     selectedGenre: string | null;
@@ -14,37 +17,68 @@ interface GenderFilterProps {
 
 export default function GenderFilter({ artists, selectedGenre, onSelectGenre }: GenderFilterProps) {
 
+    const scrollRef = useRef<HTMLDivElement>(null)
+
     // Eliminar duplicados
-    const genres = [...new Set(artists.map(a => a.musicGenre))]
+    const genres: string[] = [...new Set(artists.map(a => a.musicGenre))]
+
+    // Funcionalidad botones
+    const scroll = (direction: "left" | "right") => {
+        if (!scrollRef.current) return
+
+        const scrollAmount = 200
+
+        // Efecto
+        scrollRef.current.scrollBy({
+            left: direction === "left" ? -scrollAmount : scrollAmount,
+            behavior: "smooth",
+        })
+    }
 
     return (
-        <section className="flex flex-wrap gap-4 pb-8">
-
-            {/* Botón reset */}
+        <div className="relative">
             <button
-                onClick={() => onSelectGenre(null)}
-                className={`px-4 py-2 rounded-full transition
-                ${selectedGenre === null
-                        ? "bg-black text-white"
-                        : "bg-gray-200 hover:bg-gray-300 cursor-pointer"
-                    }`}
+                onClick={() => scroll("left")}
+                className="hidden md:flex absolute left-0 top-4  -translate-y-1/2 z-10 bg-white shadow-md rounded-full w-8 h-8 items-center justify-center"
             >
-                All
+                {<strong>{'<'}</strong>}
             </button>
 
-            {genres.map((genre, index) => (
+            {/* Contenedor scroll */}
+            <div ref={scrollRef} className="flex gap-3 overflow-x-auto no-scrollbar pb-4 px-8">
+
                 <button
-                    key={index}
-                    onClick={() => onSelectGenre(genre)}
-                    className={`whitespace-nowrap px-4 py-2 rounded-full transition
-                    ${selectedGenre === genre
+                    onClick={() => onSelectGenre(null)}
+                    className={`whitespace-nowrap px-4 py-1.5 text-sm rounded-full font-medium transition
+                    ${selectedGenre === null
                             ? "bg-black text-white"
-                            : "bg-gray-200 hover:bg-gray-300 cursor-pointer"
+                            : "bg-gray-100 text-black hover:bg-gray-200"
                         }`}
                 >
-                    {genre}
+                    All
                 </button>
-            ))}
-        </section>
+
+                {genres.map((genre) => (
+                    <button
+                        key={genre}
+                        onClick={() => onSelectGenre(genre)}
+                        className={`whitespace-nowrap px-4 py-1.5 text-sm rounded-full font-medium transition
+                        ${selectedGenre === genre
+                                ? "bg-black text-white"
+                                : "bg-gray-100 text-black hover:bg-gray-200"
+                            }`}
+                    >
+                        {genre}
+                    </button>
+                ))}
+            </div>
+
+            <button
+                onClick={() => scroll("right")}
+                className="hidden md:flex absolute right-0 top-4 -translate-y-1/2 z-10 bg-white shadow-md rounded-full w-8 h-8 items-center justify-center"
+            >
+                {<strong>{'>'}</strong>}
+            </button>
+        </div>
     )
 }
