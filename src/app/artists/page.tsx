@@ -1,4 +1,3 @@
-import Releases from "../../../components/Releases";
 import Aside from "../../../components/Aside";
 import ArtistsClient from "../../../components/ArtistClient";
 
@@ -13,13 +12,11 @@ export default async function Artists() {
 
     return (
         <>
-            <section>
-                <section className="grid grid-cols-[75%_25%]">
-                    <main className="border-r border-gray-100">
-                        <ArtistsClient artists={artists} />
-                    </main>
-                    <Aside />
-                </section>
+            <section className="flex flex-col lg:flex-row gap-24">
+                <main className="pr-0 lg:pr-16 xs:w-auto sm:w-auto md:w-auto lg:w-200">
+                    <ArtistsClient artists={artists} />
+                </main>
+                <Aside />
             </section>
         </>
     )

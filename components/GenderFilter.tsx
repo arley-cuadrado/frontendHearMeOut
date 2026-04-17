@@ -1,5 +1,5 @@
 'use client'
-import { GenderFilterProps } from '../types/artist'
+import { GenderFilterProps } from '../types/Artist'
 import { useRef } from "react"
 
 export default function GenderFilter({ artists, selectedGenre, onSelectGenre }: GenderFilterProps) {

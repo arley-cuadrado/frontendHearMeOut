@@ -1,7 +1,7 @@
 export default function Aside() {
     return (
         <>
-            <aside className="gap-6 mb-7">
+            <aside className="gap-6 mb-7 bg-white border-l border-gray-100">
                 <div className="bg-white pb-24 sm:pb-32">
                     <div className="mx-auto max-w-7xl px-6 lg:px-8">
                         <div className="mx-auto max-w-2xl lg:mx-0">
