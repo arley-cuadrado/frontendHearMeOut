@@ -1,11 +1,46 @@
+//---------- fetchArtistDetail
+
 export async function fetchArtistDetail(slug: string) {
-    const res = await fetch(`http://localhost:1337/api/artists?filters[slug][$eq]=${slug}&populate=*`)
-    const data = await res.json()
-    return data.data[0]
+    const baseUrl = process.env.NEXT_PUBLIC_STRAPI_BASE_URL;
+
+    if (!baseUrl) {
+        throw new Error("Missing NEXT_PUBLIC_STRAPI_BASE_URL");
+    }
+
+    const res = await fetch(
+        `${baseUrl}/api/artists?filters[slug][$eq]=${slug}&populate=*`,
+        {
+            next: { revalidate: 60 },
+        }
+    );
+
+    if (!res.ok) {
+        throw new Error(`Failed to fetch artist: ${res.status}`);
+    }
+
+    const data = await res.json();
+
+    return data?.data?.[0] || null;
 }
 
+//---------- fetchAdminBlog
+
 export async function fetchAdminBlog() {
-    const res = await fetch(`http://localhost:1337/api/admin-blogs`)
-    const dataBlog = await res.json()
-    return dataBlog?.data?.[0] || null
+    const baseUrl = process.env.NEXT_PUBLIC_STRAPI_BASE_URL;
+
+    if (!baseUrl) {
+        throw new Error("Missing NEXT_PUBLIC_STRAPI_BASE_URL");
+    }
+
+    const res = await fetch(`${baseUrl}/api/admin-blogs`, {
+        next: { revalidate: 60 },
+    });
+
+    if (!res.ok) {
+        throw new Error(`Failed to fetch admin blog: ${res.status}`);
+    }
+
+    const dataBlog = await res.json();
+
+    return dataBlog?.data?.[0] || null;
 }
