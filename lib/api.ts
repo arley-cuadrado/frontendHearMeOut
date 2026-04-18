@@ -10,7 +10,7 @@ export async function fetchArtistDetail(slug: string) {
     const res = await fetch(
         `${baseUrl}/api/artists?filters[slug][$eq]=${slug}&populate=*`,
         {
-            next: { revalidate: 60 },
+            cache: "no-store",
         }
     );
 
@@ -33,7 +33,7 @@ export async function fetchAdminBlog() {
     }
 
     const res = await fetch(`${baseUrl}/api/admin-blogs`, {
-        next: { revalidate: 60 },
+        cache: "no-store",
     });
 
     if (!res.ok) {
