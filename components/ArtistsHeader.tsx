@@ -28,7 +28,7 @@ export default function ArtistsHeader({ artist }: Props) {
                 />
 
                 <section>
-                    <h1 className="text-3xl md:text-5xl lg:text-7xl text-center uppercase font-bold text-white">
+                    <h1 className="text-3xl md:text-5xl lg:text-7xl uppercase font-bold text-white">
                         {artist.releasesTitle}
                     </h1>
                     <div><strong className="text-white">{artist.musicGenre}</strong></div>
