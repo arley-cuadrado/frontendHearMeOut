@@ -1,4 +1,4 @@
-export default function ContactUs() {
+export default async function ContactUs() {
 
     return (
         <>

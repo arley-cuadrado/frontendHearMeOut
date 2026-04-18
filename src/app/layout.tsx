@@ -7,8 +7,8 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
 const navItems = [
-  { path: '/contact-us', text: 'Contact us' },
-  { path: '/about-us', text: 'About us' }
+  //{ path: '/contact-us', text: 'Contact us' },
+  { path: '/about-us', text: 'Sin tanto cuento...' }
 ]
 
 const geistSans = Geist({
@@ -40,7 +40,7 @@ export default function RootLayout({
         <section className="min-h-dvh">
           <div className="bg-white/50">
             <div className="max-w-7xl mx-auto flex items-center justify-between px-8">
-              <Link href="/"><h2 className="text-2xl text-gray-500 py-3 font-bold">hearMeOut</h2></Link>
+              <Link href="/"><h2 className="text-2xl text-gray-500 py-3 title"><strong>Odd</strong>sound</h2></Link>
               <nav>
                 <ul className=" text-gray-500 text-sm">
                   <li className="flex gap-x-7">
@@ -53,7 +53,7 @@ export default function RootLayout({
               </nav>
             </div>
           </div>
-          <main className="max-w-7xl mx-auto rounded-xl py-7 px-8 m-6 overflow-hidden">
+          <main className="max-w-7xl mx-auto rounded-xl py-0 px-8 m-6 overflow-hidden">
             {children}
           </main>
           <Footer />

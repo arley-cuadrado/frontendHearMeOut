@@ -1,8 +1,19 @@
-export default function AboutUs() {
+import Link from "next/link"
+import { fetchAdminBlog } from "../../../lib/api"
+import { BlocksRenderer } from "@strapi/blocks-react-renderer"
+
+export default async function AboutUs() {
+
+    const adminBlog = await fetchAdminBlog()
+
+    if (!adminBlog) return <p>No content</p>
+
     return (
         <>
-            <h1>Hi, this is About Page</h1>
-            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Fuga maxime repellendus quibusdam. Perferendis voluptatum dolorem sint ducimus atque, expedita beatae quo, facere consectetur accusamus exercitationem cupiditate. Praesentium voluptates provident maxime?</p>
+            <article className="prose max-w-none mx-auto lg:w-150 gap-4">
+                <BlocksRenderer content={adminBlog.description} /><Link href={`mailto:${adminBlog.emailAdmin}`}>Por ahora, si quieres aparecer escribeme aquí.</Link>
+                <h3>{adminBlog.name}</h3>
+            </article>
         </>
     )
 }

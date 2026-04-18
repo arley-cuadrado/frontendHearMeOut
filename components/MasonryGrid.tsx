@@ -35,7 +35,7 @@ export default function MasonryGrid({ gallery }: MasonryGridProps) {
 
     return (
         <>
-            <div className="columns-1 sm:columns-2 lg:columns-3 gap-4 py-10 md:py-20 w-150">
+            <div className="columns-1 sm:columns-2 lg:columns-3 gap-4 py-10 md:py-20 w-auto">
                 {gallery.map((image, index) => (
                     <div key={index} className="mb-4 break-inside-avoid">
                         <div

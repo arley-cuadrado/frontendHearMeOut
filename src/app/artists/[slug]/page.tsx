@@ -69,18 +69,18 @@ export default async function DetailArtist({ params }: { params: DetailArtistsDa
 
         <>
             <ArtistsHeader artist={artist} />
-            <section className="flex flex-col items-center">
-                <main className="w-150 gap-4">
-                    <h1 className="text-8xl font-bold pt-16 pb-16">{artist.name}</h1> <h3>{artist.description}</h3>
+            <section className="flex flex-col items-center md:w-auto">
+                <main className="mx-auto lg:w-150 gap-4">
+                    <h1 className="text-3xl md:text-5xl lg:text-7xl font-bold pt-16 pb-16">{artist.name}</h1> <h3>{artist.description}</h3>
                     <article className="prose max-w-none">
                         {artist.bodyContent.map((item: any, index: number) => OurRenderer(item, index))}
-                    </article >
+                    </article>
                     <Video video={artist.urlVideo} />
                     <Live params={artist} />
+                    <MasonryGrid gallery={artist.gallery} />
+                    <SpotifyPlayer url={artist.spotifyUrl} spotifyAccount={artist.spotifyAccount} />
+                    <SocialMedia social={artist.socialMedia[0]} />
                 </main>
-                <MasonryGrid gallery={artist.gallery} />
-                <SpotifyPlayer url={artist.spotifyUrl} spotifyAccount={artist.spotifyAccount} />
-                <SocialMedia social={artist.socialMedia[0]} />
             </section>
         </>
 

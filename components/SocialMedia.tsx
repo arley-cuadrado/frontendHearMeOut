@@ -6,7 +6,7 @@ export default async function SocialMedia({ social }: { social: any }) {
 
     return (
         <>
-            <ul className="flex gap-4 grid-cols-1 gap-x-8 gap-y-16 border-t border-gray-200 pt-10 sm:mt-10 lg:mx-0 lg:max-w-none lg:grid-cols-3 w-100">
+            <ul className="flex flex-col md:flex-row gap-8 grid-cols-1 border-t border-gray-200 pt-10 sm:mt-10 lg:mx-0 lg:max-w-none lg:grid-cols-3 w-auto justify-center items-center">
                 {Object.entries(social || {})
                     .filter(([_, url]) => typeof url === "string" && url.trim() !== "")
                     .map(([platform, url]) => (

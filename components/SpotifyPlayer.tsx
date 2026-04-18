@@ -12,7 +12,7 @@ export default function SpotifyPlayer({ url, spotifyAccount }: spotifyAccount) {
     return (
         <iframe
             src={embedUrl}
-            width="50%"
+            width="100%"
             height="auto"
             allow="autoplay; clipboard-write; encrypted-media"
             loading="lazy"
