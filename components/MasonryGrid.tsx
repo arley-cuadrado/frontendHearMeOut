@@ -1,4 +1,5 @@
 'use client'
+import { getStrapiImage } from "../lib/utils";
 import { useState } from "react"
 
 interface ImageFormat {
@@ -25,12 +26,12 @@ export default function MasonryGrid({ gallery }: MasonryGridProps) {
     const [selectedImage, setSelectedImage] = useState<GalleryImage | null>(null)
 
     //const baseUrl = process.env.NEXT_PUBLIC_STRAPI_URL
-    const baseUrl = process.env.NEXT_PUBLIC_STRAPI_BASE_URL
+    //const baseUrl = process.env.NEXT_PUBLIC_STRAPI_BASE_URL
 
     const imageUrl =
         selectedImage?.formats?.medium?.url ||
         selectedImage?.formats?.small?.url ||
-        selectedImage?.formats?.thumbnail?.url
+        selectedImage?.formats?.thumbnail?.url;
 
     if (!gallery) return null
 
@@ -43,7 +44,7 @@ export default function MasonryGrid({ gallery }: MasonryGridProps) {
                             className="aspect-square overflow-hidden"
                             onClick={() => setSelectedImage(image)}
                         >{/* rounded-lg */}
-                            <img src={`${baseUrl}${image.formats.thumbnail.url}`}
+                            <img src={getStrapiImage(image?.formats?.thumbnail?.url)}
                                 key={image.id}
                                 alt=""
                                 className="w-full h-full object-cover cursor-pointer" />
@@ -58,8 +59,7 @@ export default function MasonryGrid({ gallery }: MasonryGridProps) {
                         className="fixed inset-0 bg-black/80 flex items-center justify-center z-50"
                         onClick={() => setSelectedImage(null)}
                     >
-                        <img
-                            src={`${baseUrl}${imageUrl}`}
+                        <img src={getStrapiImage(imageUrl)}
                             className="max-h-[90vh] max-w-[90vw]"
                             onClick={(e) => e.stopPropagation()}
                         />{/* rounded-lg */}

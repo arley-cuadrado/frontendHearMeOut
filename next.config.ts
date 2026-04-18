@@ -1,7 +1,9 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  images: {
+    domains: ["splendid-hero-2a7aa4fb06.strapiapp.com"],
+  },
 };
 
 export default nextConfig;

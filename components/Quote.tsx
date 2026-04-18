@@ -1,3 +1,5 @@
+import { getStrapiImage } from "../lib/utils"
+
 export default function Quote({ phrase, photo }: any) {
 
     if (!phrase?.length) return null
@@ -5,7 +7,11 @@ export default function Quote({ phrase, photo }: any) {
     return (
         <>
             <section className="flex justify-center items-center flex-col md:flex-row gap-8">
-                <img className="w-32 h-32 rounded-full object-cover object-center" src={`${process.env.NEXT_PUBLIC_STRAPI_BASE_URL}${photo.formats.thumbnail.url}`} alt="" />
+                <img
+                    className="w-32 h-32 rounded-full object-cover object-center"
+                    src={getStrapiImage(photo?.formats?.thumbnail?.url)}
+                    alt=""
+                />
                 <p className="text-2xl italic title">{phrase[0]?.children?.[0]?.text}</p>
             </section>
         </>

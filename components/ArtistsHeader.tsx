@@ -1,3 +1,5 @@
+import { getStrapiImage } from '../lib/utils';
+
 interface dataArtist {
     artist: string;
     releasesTitle: string;
@@ -21,7 +23,7 @@ export default function ArtistsHeader({ artist }: Props) {
             <header className="bg-black bg-cover bg-center h-100 flex flex-col lg:flex-row items-center gap-8">
                 <img
                     className="w-auto lg:w-100 h-full object-cover"
-                    src={`${process.env.NEXT_PUBLIC_STRAPI_BASE_URL}${artist.photo?.formats?.small?.url}`}
+                    src={getStrapiImage(artist.photo?.formats?.small?.url)}
                     alt=""
                 />
 

@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react"
 import Link from "next/link"
+import { getStrapiImage } from '../lib/utils';
 
 interface Artist {
   id: number;
@@ -54,7 +55,7 @@ export default function Releases({ artists }: { artists: Artist[] }) {
               <div className="w-auto md:w-32 h-24 overflow-hidden">
                 <img
                   className="w-100 md:w-32 h-full object-cover"
-                  src={`http://localhost:1337${artist.photo.formats.small.url}`}
+                  src={getStrapiImage(artist.photo?.formats?.small?.url)}
                   alt=""
                 />
               </div>
