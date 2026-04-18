@@ -31,7 +31,7 @@ export default async function Live({ params }: LiveEventsProps) {
             {
                 event?.length > 0 ? (
                     <div className="w-full">
-                        <div className="hidden md:grid grid-cols-4 text-sm font-semibold text-gray-500 px-4 py-2">
+                        <div className="hidden md:grid grid-cols-4 text-sm font-semibold text-gray-500 dark:text-gray-400 px-4 py-2">
                             <span>DATE</span>
                             <span>CITY</span>
                             <span>VENUE</span>
@@ -42,22 +42,22 @@ export default async function Live({ params }: LiveEventsProps) {
                             event.map((item) => (
                                 <div key={item.id} className="border-gray-200 md:grid md:grid-cols-4 md:items-center p-4 gap-2">
                                     <div className="flex justify-between md:block mb-4">
-                                        <span className="md:hidden font-semibold text-gray-500">DATE</span>
+                                        <span className="md:hidden font-semibold text-gray-500 dark:text-gray-400">DATE</span>
                                         <span>{item.date}</span>
                                     </div>
 
                                     <div className="flex justify-between md:block mb-4">
-                                        <span className="md:hidden font-semibold text-gray-500">CITY</span>
+                                        <span className="md:hidden font-semibold text-gray-500 dark:text-gray-400">CITY</span>
                                         <span>{item.city}</span>
                                     </div>
 
                                     <div className="flex justify-between md:block mb-4">
-                                        <span className="md:hidden font-semibold text-gray-500">VENUE</span>
+                                        <span className="md:hidden font-semibold text-gray-500 dark:text-gray-400">VENUE</span>
                                         <span>{item.venue}</span>
                                     </div>
 
                                     <div className="flex justify-between md:block mb-4">
-                                        <span className="md:hidden font-semibold text-gray-500">BUY</span>
+                                        <span className="md:hidden font-semibold text-gray-500 dark:text-gray-400">BUY</span>
                                         <button className="bg-black text-white px-4 py-2 rounded-full">
                                             Get Ticket
                                         </button>

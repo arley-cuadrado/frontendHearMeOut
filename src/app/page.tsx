@@ -8,7 +8,7 @@ export default async function Home() {
 
   return (
     <>
-      <section className="mb-16 text-gray-500">
+      <section className="mb-16">
         <Header artist={artist?.name} />
       </section>
       <Artists />

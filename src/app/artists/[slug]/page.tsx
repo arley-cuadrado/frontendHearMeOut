@@ -71,8 +71,15 @@ export default async function DetailArtist({ params }: { params: DetailArtistsDa
             <ArtistsHeader artist={artist} />
             <section className="flex flex-col items-center md:w-auto">
                 <main className="mx-auto lg:w-150 gap-4">
-                    <h1 className="text-3xl md:text-5xl lg:text-7xl font-bold pt-16 pb-16">{artist.name}</h1> <h3>{artist.description}</h3>
-                    <article className="prose max-w-none">
+                    <h1 className="text-3xl md:text-5xl lg:text-7xl font-bold pt-16 pb-16 text-slate-700 dark:text-white">{artist.name}</h1> <p className="text-slate-600 dark:text-gray-400">{artist.description}</p>
+                    <article className="
+                        prose 
+                        prose-h1:text-slate-700 prose-h1:dark:text-white 
+                        prose-h2:text-slate-700 prose-h2:dark:text-white
+                        prose-h3:text-slate-700 prose-h3:dark:text-white
+                        prose-h4:text-slate-700 prose-h4:dark:text-white
+                        prose-h5:text-slate-700 prose-h5:dark:text-white
+                        max-w-none text-slate-600 dark:text-gray-400">
                         {artist.bodyContent.map((item: any, index: number) => OurRenderer(item, index))}
                     </article>
                     <Video video={artist.urlVideo} />

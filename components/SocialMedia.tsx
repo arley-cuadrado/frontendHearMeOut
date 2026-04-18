@@ -11,7 +11,7 @@ export default async function SocialMedia({ social }: { social: any }) {
                     .filter(([_, url]) => typeof url === "string" && url.trim() !== "")
                     .map(([platform, url]) => (
                         <li key={platform}>
-                            <Link href={url as string} className="font-bold capitalize text-blue-500" target="_blank">{platform}</Link>
+                            <Link href={url as string} className="font-bold capitalize text-blue-500 dark:text-blue-400" target="_blank">{platform}</Link>
                         </li>
                     ))}
             </ul>

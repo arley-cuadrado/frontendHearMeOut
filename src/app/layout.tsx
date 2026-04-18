@@ -36,13 +36,13 @@ export default function RootLayout({
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">
+      <body className="bg-white dark:bg-gray-800 min-h-full flex flex-col">
         <section className="min-h-dvh">
-          <div className="bg-white/50">
+          <div>
             <div className="max-w-7xl mx-auto flex items-center justify-between px-8">
-              <Link href="/"><h2 className="text-2xl text-gray-500 py-3 title"><strong>Odd</strong>sound</h2></Link>
+              <Link href="/"><h2 className="text-2xl py-3 title"><strong>Odd</strong>sound</h2></Link>
               <nav>
-                <ul className=" text-gray-500 text-sm">
+                <ul className=" text-sm">
                   <li className="flex gap-x-7">
                     {navItems.map((navItem) => (
                       <NavLink key={navItem.path} {...navItem} />
