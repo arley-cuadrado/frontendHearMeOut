@@ -24,7 +24,8 @@ export default function MasonryGrid({ gallery }: MasonryGridProps) {
 
     const [selectedImage, setSelectedImage] = useState<GalleryImage | null>(null)
 
-    const baseUrl = process.env.NEXT_PUBLIC_STRAPI_URL
+    //const baseUrl = process.env.NEXT_PUBLIC_STRAPI_URL
+    const baseUrl = process.env.NEXT_PUBLIC_STRAPI_BASE_URL
 
     const imageUrl =
         selectedImage?.formats?.medium?.url ||
