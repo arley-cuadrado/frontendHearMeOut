@@ -43,7 +43,7 @@ async function fetchArtistDetail(slug: string) {
                 gallery: true
             }
         })
-    const artistsPromise = await fetch(`${process.env.STRAPI_BASE_URL}/api/artists?${artistQuery}`)
+    const artistsPromise = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_BASE_URL}/api/artists?${artistQuery}`)
     const artist = await artistsPromise.json()
     return artist.data[0]
 }

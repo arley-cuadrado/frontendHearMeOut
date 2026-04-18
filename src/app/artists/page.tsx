@@ -2,7 +2,7 @@ import Aside from "../../../components/Aside";
 import ArtistsClient from "../../../components/ArtistClient";
 
 async function getAllArtists() {
-    const artistsPromise = await fetch(`${process.env.STRAPI_BASE_URL}/api/artists?populate=*`)
+    const artistsPromise = await fetch(`${process.env.NEXT_PUBLIC_STRAPI_BASE_URL}/api/artists?populate=*`)
     const artists = await artistsPromise.json()
     return artists.data
 }
