@@ -20,10 +20,15 @@ export interface Artist {
 }
 
 export default function ArtistsClient({ artists }: { artists: Artist[] }) {
+
     const [selectedGenre, setSelectedGenre] = useState<string | null>(null)
 
+    if (!artists || artists.length === 0) {
+        return <p>No artists yet</p>;
+    }
+
     const filteredArtists = selectedGenre
-        ? artists.filter((a) => a.musicGenre === selectedGenre)
+        ? artists.filter((a) => a.musicGenre && a.musicGenre === selectedGenre)
         : artists
 
     return (
