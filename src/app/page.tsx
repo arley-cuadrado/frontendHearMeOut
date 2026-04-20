@@ -1,9 +1,9 @@
 import Header from "../../components/Header";
-import ArtistDetailView from "../../components/ArtistDetailView";
-import { fetchArtistDetail } from "../../lib/api";
+import { fetchHomeArtist } from "../../lib/api";
+import Artists from "./artists/page";
 
 export default async function Home() {
-  const artist = await fetchArtistDetail("fireboy-dml");
+  const artist = await fetchHomeArtist();
 
   return (
     <>
@@ -11,7 +11,7 @@ export default async function Home() {
         <Header artist={artist?.name} />
       </section>
 
-      <ArtistDetailView artist={artist} />
+      <Artists />
     </>
   );
 }

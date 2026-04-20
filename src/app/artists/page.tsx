@@ -4,6 +4,8 @@ import ArtistsClient from "../../../components/ArtistClient";
 async function getAllArtists() {
     const baseUrl = process.env.NEXT_PUBLIC_STRAPI_BASE_URL;
 
+    console.log('AJA, QUE PASO CONTIGO? ')
+
     if (!baseUrl) {
         console.error("Missing STRAPI URL");
         return [];
