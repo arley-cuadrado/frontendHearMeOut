@@ -1,4 +1,4 @@
-import Artists from "./artists/page";
+import DetailArtist from "./artists/page";
 import Header from "../../components/Header";
 import { fetchArtistDetail } from '../../lib/api';
 
@@ -11,7 +11,7 @@ export default async function Home() {
       <section className="mb-16">
         <Header artist={artist?.name} />
       </section>
-      <Artists />
+      <DetailArtist params={artist} />
     </>
   );
 }
