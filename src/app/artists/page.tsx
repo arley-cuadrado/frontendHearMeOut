@@ -11,7 +11,7 @@ async function getAllArtists() {
 
     try {
         const res = await fetch(`${baseUrl}/api/artists?populate=*`, {
-            next: { revalidate: 60 },
+            cache: 'no-store',
         });
 
         if (!res.ok) {
