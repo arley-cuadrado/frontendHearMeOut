@@ -80,13 +80,33 @@ export default async function DetailArtist({ params }: { params: DetailArtistsDa
                         prose-h4:text-slate-700 prose-h4:dark:text-white
                         prose-h5:text-slate-700 prose-h5:dark:text-white
                         max-w-none text-slate-600 dark:text-gray-400">
-                        {artist.bodyContent.map((item: any, index: number) => OurRenderer(item, index))}
+                        {/*{artist.bodyContent.map((item: any, index: number) => OurRenderer(item, index))}*/}
+                        {/* render seguro */}
+                        {artist?.bodyContent?.map((item: any, index: number) =>
+                            OurRenderer(item, index)
+                        )}
                     </article>
-                    <Video video={artist.urlVideo} />
+                    {/*<Video video={artist.urlVideo} />*/}
+                    {/* render seguro */}
+                    {artist?.urlVideo && <Video video={artist.urlVideo} />}
                     <Live params={artist} />
-                    <MasonryGrid gallery={artist.gallery} />
-                    <SpotifyPlayer url={artist.spotifyUrl} spotifyAccount={artist.spotifyAccount} />
-                    <SocialMedia social={artist.socialMedia[0]} />
+                    {/*<MasonryGrid gallery={artist.gallery} />*/}
+                    {/* render seguro */}
+                    {artist?.gallery && <MasonryGrid gallery={artist.gallery} />}
+
+                    {/*<SpotifyPlayer url={artist.spotifyUrl} spotifyAccount={artist.spotifyAccount} />*/}
+                    {/* render seguro */}
+                    {artist?.spotifyUrl && (
+                        <SpotifyPlayer
+                            url={artist.spotifyUrl}
+                            spotifyAccount={artist.spotifyAccount}
+                        />
+                    )}
+                    {/*<SocialMedia social={artist.socialMedia[0]} />*/}
+                    {/* render seguro */}
+                    {artist?.socialMedia?.[0] && (
+                        <SocialMedia social={artist.socialMedia[0]} />
+                    )}
                 </main>
             </section>
         </>
