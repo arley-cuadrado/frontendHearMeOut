@@ -1,12 +1,13 @@
+/* eslint-disable @next/next/no-img-element */
 import { getStrapiImage } from '../lib/utils';
 
 interface dataArtist {
-    artist: string;
-    releasesTitle: string;
-    musicGenre: string;
-    photo: {
-        formats: {
-            small: {
+    artist?: string;
+    releasesTitle?: string;
+    musicGenre?: string;
+    photo?: {
+        formats?: {
+            small?: {
                 url: string;
             };
         };

@@ -4,7 +4,7 @@ interface spotifyAccount {
     url: string;
     spotifyAccount: string;
 }
-export default function SpotifyPlayer({ url, spotifyAccount }: spotifyAccount) {
+export default function SpotifyPlayer({ spotifyAccount }: spotifyAccount) {
     const embedUrl = getSpotifyEmbed(spotifyAccount)
 
     if (!spotifyAccount || !embedUrl) return null

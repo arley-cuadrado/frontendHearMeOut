@@ -1,6 +1,18 @@
+/* eslint-disable @next/next/no-img-element */
 import { getStrapiImage } from "../lib/utils"
 
-export default function Quote({ phrase, photo }: any) {
+interface QuoteProps {
+    phrase?: { children?: { text?: string }[] }[];
+    photo?: {
+        formats?: {
+            thumbnail?: {
+                url: string;
+            };
+        };
+    };
+}
+
+export default function Quote({ phrase, photo }: QuoteProps) {
 
     if (!phrase?.length) return null
 

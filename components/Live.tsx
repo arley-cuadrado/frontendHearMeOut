@@ -1,35 +1,21 @@
-import { fetchArtistDetail } from '../lib/api';
-
-interface LiveEventsProps {
-    params: {
-        slug: string;
-    };
-}
-
 interface LiveEvent {
     id: number;
-    slug: string;
     date: string;
     city: string;
     venue: string;
 }
 
-interface ArtistDetail {
-    event: LiveEvent[];
+interface LiveEventsProps {
+    events?: LiveEvent[];
 }
 
-export default async function Live({ params }: LiveEventsProps) {
-
-    const artist: ArtistDetail = await fetchArtistDetail(params.slug)
-
-    const event = artist.event
-
+export default function Live({ events = [] }: LiveEventsProps) {
     return (<>
         <h2 className="text-3xl md:text-5xl lg:text-7xl font-bold pt-0 pb-0">Tour 2026</h2>
 
         <section className="pt-24 pb-24">
             {
-                event?.length > 0 ? (
+                events.length > 0 ? (
                     <div className="w-full">
                         <div className="hidden md:grid grid-cols-4 text-sm font-semibold text-gray-500 dark:text-gray-400 px-4 py-2">
                             <span>DATE</span>
@@ -39,7 +25,7 @@ export default async function Live({ params }: LiveEventsProps) {
                         </div>
 
                         {
-                            event.map((item) => (
+                            events.map((item) => (
                                 <div key={item.id} className="border-gray-200 md:grid md:grid-cols-4 md:items-center p-4 gap-2">
                                     <div className="flex justify-between md:block mb-4">
                                         <span className="md:hidden font-semibold text-gray-500 dark:text-gray-400">DATE</span>

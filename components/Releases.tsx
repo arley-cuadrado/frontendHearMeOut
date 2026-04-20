@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import { useState, useEffect } from "react"
 import Link from "next/link"
 import { getStrapiImage } from '../lib/utils';

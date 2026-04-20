@@ -1,4 +1,5 @@
 'use client'
+/* eslint-disable @next/next/no-img-element */
 import { getStrapiImage } from "../lib/utils";
 import { useState } from "react"
 
@@ -61,6 +62,7 @@ export default function MasonryGrid({ gallery }: MasonryGridProps) {
                     >
                         <img src={getStrapiImage(imageUrl)}
                             className="max-h-[90vh] max-w-[90vw]"
+                            alt=""
                             onClick={(e) => e.stopPropagation()}
                         />{/* rounded-lg */}
                     </div>

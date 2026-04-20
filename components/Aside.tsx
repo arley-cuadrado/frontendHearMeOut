@@ -37,7 +37,7 @@ export default function Aside() {
                                                 Arlo Cuadrado
                                                 {/*</a>*/}
                                             </p>
-                                            <p className="text-slate-600 dark:text-gray-400">Founder / "Content Creator"</p>
+                                            <p className="text-slate-600 dark:text-gray-400">Founder / &quot;Content Creator&quot;</p>
                                         </div>
                                     </div>
                                 </article>
