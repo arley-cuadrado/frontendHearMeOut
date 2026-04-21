@@ -1,15 +1,18 @@
-export function getSpotifyEmbed(url: string) {
+export function getSpotifyEmbed(url?: string) {
+    if (!url) return null
+
     try {
         const parsed = new URL(url)
 
         // Clean params as ?si=xxxx
         const cleanPath = parsed.pathname.split("?")[0]
 
-        // example: /artist/123abc
+        // examples: /artist/123abc or /embed/artist/123abc
         const parts = cleanPath.split("/").filter(Boolean)
+        const spotifyParts = parts[0] === "embed" ? parts.slice(1) : parts
 
-        const type = parts[0] // artist, track, album, playlist
-        const id = parts[1]
+        const type = spotifyParts[0]
+        const id = spotifyParts[1]
 
         if (!type || !id) return null
 

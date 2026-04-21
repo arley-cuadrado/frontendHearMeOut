@@ -97,7 +97,7 @@ export default function ArtistDetailView({ artist }: { artist: ArtistDetail | nu
                         <MasonryGrid gallery={artist.gallery ?? []} />
                     )}
 
-                    {artist?.spotifyUrl && artist?.spotifyAccount && (
+                    {(artist?.spotifyAccount || artist?.spotifyUrl) && (
                         <SpotifyPlayer
                             url={artist.spotifyUrl}
                             spotifyAccount={artist.spotifyAccount}
