@@ -3,13 +3,15 @@ import { getStrapiImage } from '../lib/utils';
 
 interface dataArtist {
     artist?: string;
+    name?: string;
     releasesTitle?: string;
     musicGenre?: string;
     photo?: {
+        url?: string;
         formats?: {
-            small?: {
-                url: string;
-            };
+            thumbnail?: { url: string };
+            small?: { url: string };
+            medium?: { url: string };
         };
     };
 }
@@ -19,13 +21,22 @@ interface Props {
 }
 
 export default function ArtistsHeader({ artist }: Props) {
+    const artistPhotoUrl =
+        artist.photo?.formats?.small?.url ||
+        artist.photo?.formats?.medium?.url ||
+        artist.photo?.formats?.thumbnail?.url ||
+        artist.photo?.url
+
+    const artistImage = getStrapiImage(artistPhotoUrl) || "/images/hero.jpeg"
+    const artistName = artist.releasesTitle || artist.name || artist.artist || "Artist"
+
     return (
         <>
             <header className="bg-black bg-cover bg-center h-100 flex flex-col lg:flex-row items-center gap-8">
                 <img
                     className="w-auto lg:w-100 h-full object-cover"
-                    src={getStrapiImage(artist.photo?.formats?.small?.url)}
-                    alt=""
+                    src={artistImage}
+                    alt={artistName}
                 />
 
                 <section>
